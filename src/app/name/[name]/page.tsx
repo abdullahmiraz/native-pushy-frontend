@@ -8,7 +8,7 @@ export default async function NamePage({
 }: {
   params: { name: string };
 }) {
-  const { name } = params;
+  const { name } = await params;
 
   await connectDB();
 

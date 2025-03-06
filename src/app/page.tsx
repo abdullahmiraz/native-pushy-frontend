@@ -19,7 +19,7 @@ export default function Home() {
     if (typeof window !== "undefined" && messaging) {
       generateToken();
       onMessage(messaging, (payload) => {
-        console.log("Message received. ", payload);
+        // console.log("Message received. ", payload);
         toast(payload.notification?.body || "Not found message");
       });
     }

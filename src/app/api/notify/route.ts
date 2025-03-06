@@ -1,31 +1,54 @@
-import { NextResponse } from "next/server";
+import admin from "firebase-admin";
+
+if (!admin.apps.length) {
+  const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_PATH;
+  console.log(serviceAccount);
+  if (!serviceAccount) {
+    throw new Error(
+      "Service account JSON path is not defined in environment variables."
+    );
+  }
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
 
 export async function POST(req: Request) {
   const { name, token } = await req.json();
 
-  if (!name || !token)
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  if (!name || !token) {
+    return new Response(JSON.stringify({ error: "Invalid request" }), {
+      status: 400,
+    });
+  }
 
-  const serverKey = process.env.FCM_SERVER_KEY;
-
-  const response = await fetch("https://fcm.googleapis.com/fcm/send", {
-    method: "POST",
-    headers: {
-      Authorization: `key=${serverKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      to: token,
+  try {
+    // Send a message using the Firebase Admin SDK
+    const message = {
+      token: token,
       notification: {
         title: "New Notification",
         body: `Open the app to view: ${name}`,
-        click_action: `myapp://name/${name}`,
       },
-    }),
-  });
+      android: {
+        notification: {
+          clickAction: `myapp://name/${name}`,
+        },
+      },
+    };
 
-  return NextResponse.json({
-    message: "Notification sent",
-    response: await response.json(),
-  });
+    // Send the message
+    const response = await admin.messaging().send(message);
+
+    return new Response(
+      JSON.stringify({ message: "Notification sent", response }),
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error sending message:", error);
+    return new Response(
+      JSON.stringify({ error: "Failed to send notification" }),
+      { status: 500 }
+    );
+  }
 }

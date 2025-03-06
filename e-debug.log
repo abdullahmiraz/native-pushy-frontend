@@ -1,0 +1,231 @@
+[33mcommit 682e18c1b13ff290daf8244f165514290cb037c6[m
+Author: abdullahmiraz <abdullahmiraz2015@gmail.com>
+Date:   Thu Mar 6 02:02:52 2025 +0600
+
+    first commit
+
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5ef6a52[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,41 @@[m
+[32m+[m[32m# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.[m
+[32m+[m
+[32m+[m[32m# dependencies[m
+[32m+[m[32m/node_modules[m
+[32m+[m[32m/.pnp[m
+[32m+[m[32m.pnp.*[m
+[32m+[m[32m.yarn/*[m
+[32m+[m[32m!.yarn/patches[m
+[32m+[m[32m!.yarn/plugins[m
+[32m+[m[32m!.yarn/releases[m
+[32m+[m[32m!.yarn/versions[m
+[32m+[m
+[32m+[m[32m# testing[m
+[32m+[m[32m/coverage[m
+[32m+[m
+[32m+[m[32m# next.js[m
+[32m+[m[32m/.next/[m
+[32m+[m[32m/out/[m
+[32m+[m
+[32m+[m[32m# production[m
+[32m+[m[32m/build[m
+[32m+[m
+[32m+[m[32m# misc[m
+[32m+[m[32m.DS_Store[m
+[32m+[m[32m*.pem[m
+[32m+[m
+[32m+[m[32m# debug[m
+[32m+[m[32mnpm-debug.log*[m
+[32m+[m[32myarn-debug.log*[m
+[32m+[m[32myarn-error.log*[m
+[32m+[m[32m.pnpm-debug.log*[m
+[32m+[m
+[32m+[m[32m# env files (can opt-in for committing if needed)[m
+[32m+[m[32m.env*[m
+[32m+[m
+[32m+[m[32m# vercel[m
+[32m+[m[32m.vercel[m
+[32m+[m
+[32m+[m[32m# typescript[m
+[32m+[m[32m*.tsbuildinfo[m
+[32m+[m[32mnext-env.d.ts[m
+[1mdiff --git a/eslint.config.mjs b/eslint.config.mjs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c85fb67[m
+[1m--- /dev/null[m
+[1m+++ b/eslint.config.mjs[m
+[36m@@ -0,0 +1,16 @@[m
+[32m+[m[32mimport { dirname } from "path";[m
+[32m+[m[32mimport { fileURLToPath } from "url";[m
+[32m+[m[32mimport { FlatCompat } from "@eslint/eslintrc";[m
+[32m+[m
+[32m+[m[32mconst __filename = fileURLToPath(import.meta.url);[m
+[32m+[m[32mconst __dirname = dirname(__filename);[m
+[32m+[m
+[32m+[m[32mconst compat = new FlatCompat({[m
+[32m+[m[32m  baseDirectory: __dirname,[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mconst eslintConfig = [[m
+[32m+[m[32m  ...compat.extends("next/core-web-vitals", "next/typescript"),[m
+[32m+[m[32m];[m
+[32m+[m
+[32m+[m[32mexport default eslintConfig;[m
+[1mdiff --git a/firebase-debug.log b/firebase-debug.log[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c54f961[m
+[1m--- /dev/null[m
+[1m+++ b/firebase-debug.log[m
+[36m@@ -0,0 +1,119 @@[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.136Z] ----------------------------------------------------------------------[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.138Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\neo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.138Z] CLI Version:   13.32.0[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.138Z] Platform:      win32[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.139Z] Node Version:  v22.12.0[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.139Z] Time:          Thu Mar 06 2025 01:54:29 GMT+0600 (Bangladesh Standard Time)[m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.139Z] ----------------------------------------------------------------------[m
+[32m+[m[32m[debug][m[41m [m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.145Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"][m
+[32m+[m[32m[debug] [2025-03-05T19:54:29.145Z] > authorizing via signed-in user (abdullahmiraz2015@gmail.com)[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m     ######## #### ########  ######## ########     ###     ######  ########[m
+[32m+[m[32m     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##[m
+[32m+[m[32m     ######    ##  ########  ######   ########  #########  ######  ######[m
+[32m+[m[32m     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##[m
+[32m+[m[32m     ##       #### ##     ## ######## ########  ##     ##  ######  ########[m
+[32m+[m
+[32m+[m[32mYou're about to initialize a Firebase project in this directory:[m
+[32m+[m
+[32m+[m[32m  D:\backup-gdrive\coders-life\01-office\Kumodev\projects\next-node-mongo[m
+[32m+[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m=== Project Setup[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] First, let's associate this project directory with a Firebase project.[m
+[32m+[m[32m[info] You can create multiple project aliases by running firebase use --add,[m[41m [m
+[32m+[m[32m[info] but for now we'll just set up a default project.[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[debug] [2025-03-05T19:56:10.649Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:10.649Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:10.650Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100[m
+[32m+[m[32m[debug] [2025-03-05T19:56:11.779Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200[m
+[32m+[m[32m[debug] [2025-03-05T19:56:11.779Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted][m
+[32m+[m[32m[info] i  Don't want to scroll through all your projects? If you know your project ID, you can initialize it directly using firebase init --project <project_id>.[m
+[32m+[m[41m [m
+[32m+[m[32m[info] i  Using project native-pushy (native-pushy)[m[41m [m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m=== Functions Setup[m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.822Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"][m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.822Z] > authorizing via signed-in user (abdullahmiraz2015@gmail.com)[m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.822Z] [iam] checking project native-pushy for permissions ["firebase.projects.get"][m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.823Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.823Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.823Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/native-pushy:testIamPermissions [none][m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.823Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/native-pushy:testIamPermissions x-goog-quota-user=projects/native-pushy[m
+[32m+[m[32m[debug] [2025-03-05T19:56:25.823Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/native-pushy:testIamPermissions {"permissions":["firebase.projects.get"]}[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/native-pushy:testIamPermissions 200[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/native-pushy:testIamPermissions {"permissions":["firebase.projects.get"]}[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com [none][m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.312Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/native-pushy[m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.313Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/runtimeconfig.googleapis.com [none][m
+[32m+[m[32m[debug] [2025-03-05T19:56:27.313Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/native-pushy[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.134Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/runtimeconfig.googleapis.com 200[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.134Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/runtimeconfig.googleapis.com [omitted][m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.145Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com 200[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.145Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com [omitted][m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.145Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.145Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.145Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com:enable [none][m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.145Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/native-pushy[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.691Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com:enable 200[m
+[32m+[m[32m[debug] [2025-03-05T19:56:29.691Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com:enable [omitted][m
+[32m+[m[32m[debug] [2025-03-05T19:56:39.692Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:39.692Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:56:39.692Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com [none][m
+[32m+[m[32m[debug] [2025-03-05T19:56:39.692Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/native-pushy[m
+[32m+[m[32m[debug] [2025-03-05T19:56:41.369Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com 200[m
+[32m+[m[32m[debug] [2025-03-05T19:56:41.369Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/native-pushy/services/cloudfunctions.googleapis.com [omitted][m
+[32m+[m[32m[info] Let's create a new codebase for your functions.[m
+[32m+[m[32m[info] A directory corresponding to the codebase will be created in your project[m
+[32m+[m[32m[info] with sample code pre-configured.[m
+[32m+[m
+[32m+[m[32m[info] See https://firebase.google.com/docs/functions/organize-functions for[m
+[32m+[m[32m[info] more information on organizing your functions using codebases.[m
+[32m+[m
+[32m+[m[32m[info] Functions can be deployed with firebase deploy.[m
+[32m+[m
+[32m+[m[32m[info] +  Wrote functions/package.json[m[41m [m
+[32m+[m[32m[info] +  Wrote functions/index.js[m[41m [m
+[32m+[m[32m[info] +  Wrote functions/.gitignore[m[41m [m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m=== Hosting Setup[m
+[32m+[m[32m[debug] [2025-03-05T19:57:08.923Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:57:08.923Z] Checked if tokens are valid: true, expires at: 1741208044974[m
+[32m+[m[32m[debug] [2025-03-05T19:57:08.923Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/native-pushy [none][m
+[32m+[m[32m[debug] [2025-03-05T19:57:09.438Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/native-pushy 200[m
+[32m+[m[32m[debug] [2025-03-05T19:57:09.438Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/native-pushy {"projectId":"native-pushy","projectNumber":"436590903804","displayName":"native-pushy","name":"projects/native-pushy","resources":{"hostingSite":"native-pushy"},"state":"ACTIVE","etag":"1_4105e7e9-65a3-428d-8e66-bc14c93f53de"}[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] Your public directory is the folder (relative to your project directory) that[m
+[32m+[m[32m[info] will contain Hosting assets to be uploaded with firebase deploy. If you[m
+[32m+[m[32m[info] have a build process for your assets, use your build's output directory.[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] +  Wrote public/404.html[m[41m [m
+[32m+[m[32m[debug] [2025-03-05T19:59:40.488Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none][m
+[32m+[m[32m[debug] [2025-03-05T19:59:40.673Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200[m
+[32m+[m[32m[debug] [2025-03-05T19:59:40.673Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"11.4.0","browserURL":"https://www.gstatic.com/firebasejs/11.4.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/11.4.0/firebase.tgz"},"live":{"version":"11.4","browserURL":"https://www.gstatic.com/firebasejs/live/11.4/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/11.4/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/11.4.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/11.4.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/11.4.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/11.4.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/11.4.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/11.4.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/11.4.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/11.4.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/11.4.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/11.4.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js","vertexai":"https://www.gstatic.com/firebasejs/11.4.0/firebase-vertexai.js","data-connect":"https://www.gstatic.com/firebasejs/11.4.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.memory.js"}}[m
+[32m+[m[32m[info] +  Wrote public/index.html[m[41m [m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] i  Detected a .git folder at D:\backup-gdrive\coders-life\01-office\Kumodev\projects\next-node-mongo[m[41m [m
+[32m+[m[32m[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store.[m[41m [m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] Visit this URL on this device to log in:[m
+[32m+[m[32m[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=908167688&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] Waiting for authentication...[m
+[32m+[m[32m[debug] [2025-03-05T19:59:41.466Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none][m
+[32m+[m[32m[debug] [2025-03-05T19:59:41.466Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream][m
+[32m+[m[32m[debug] [2025-03-05T19:59:41.956Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200[m
+[32m+[m[32m[debug] [2025-03-05T19:59:41.956Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}[m
+[32m+[m[32m[debug] [2025-03-05T19:59:41.957Z] >>> [apiv2][query] GET https://api.github.com/user [none][m
+[32m+[m[32m[debug] [2025-03-05T19:59:42.515Z] <<< [apiv2][status] GET https://api.github.com/user 200[m
+[32m+[m[32m[debug] [2025-03-05T19:59:42.515Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"abdullahmiraz","id":39720659,"node_id":"MDQ6VXNlcjM5NzIwNjU5","avatar_url":"https://avatars.githubusercontent.com/u/39720659?v=4","gravatar_id":"","url":"https://api.github.com/users/abdullahmiraz","html_url":"https://github.com/abdullahmiraz","followers_url":"https://api.github.com/users/abdullahmiraz/followers","following_url":"https://api.github.com/users/abdullahmiraz/following{/other_user}","gists_url":"https://api.github.com/users/abdullahmiraz/gists{/gist_id}","starred_url":"https://api.github.com/users/abdullahmiraz/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/abdullahmiraz/subscriptions","organizations_url":"https://api.github.com/users/abdullahmiraz/orgs","repos_url":"https://api.github.com/users/abdullahmiraz/repos","events_url":"https://api.github.com/users/abdullahmiraz/events{/privacy}","received_events_url":"https://api.github.com/users/abdullahmiraz/received_events","type":"User","user_view_type":"private","site_admin":false,"name":"Abdullah Miraz","company":null,"blog":"https://abdullahmiraz.github.io/","location":"Dhaka, Bangladesh","email":null,"hireable":true,"bio":"Computer Science | Competitive Programming | Web | Cloud","twitter_username":"abdullah_miraz1","notification_email":null,"public_repos":101,"public_gists":0,"followers":1,"following":12,"created_at":"2018-05-29T05:08:54Z","updated_at":"2025-03-05T18:22:40Z","private_gists":1,"total_private_repos":81,"owned_private_repos":73,"disk_usage":1342042,"collaborators":6,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}[m
+[32m+[m[32m[info][m[41m [m
+[32m+[m[32m[info] +  Success! Logged into GitHub as abdullahmiraz[m[41m [m
+[32m+[m[32m[info][m[41m [m
+[1mdiff --git a/functions/.gitignore b/functions/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..21ee8d3[m
+[1m--- /dev/null[m
+[1m+++ b/functions/.gitignore[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32mnode_modules/[m
+[32m+[m[32m*.local[m
+\ No newline at end of file[m
+[1mdiff --git a/functions/index.js b/functions/index.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e81477f[m
+[1m--- /dev/null[m
+[1m+++ b/functions/index.js[m
+[36m@@ -0,0 +1,19 @@[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Import function triggers from their respective submodules:[m
+[32m+[m[32m *[m
+[32m+[m[32m * const {onCall} = require("firebase-functions/v2/https");[m
+[32m+[m[32m * const {onDocumentWritten} = require("firebase-functions/v2/firestore");[m
+[32m+[m[32m *[m
+[32m+[m[32m * See a full list of supported triggers at https://firebase.google.com/docs/functions[m
+[32m+[m[32m */[m
+[32m+[m
+[32m+[m[32mconst {onRequest} = require("firebase-functions/v2/https");[m
+[32m+[m[32mconst logger = require("firebase-functions/logger");[m
+[32m+[m
+[32m+[m[32m// Create and deploy your first functions[m
+[32m+[m[32m// https://firebase.google.com/docs/functions/get-started[m
+[32m+[m
+[32m+[m[32m// exports.helloWorld = onRequest((request, res
