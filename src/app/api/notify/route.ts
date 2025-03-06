@@ -2,7 +2,7 @@ import admin from "firebase-admin";
 
 if (!admin.apps.length) {
   const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_PATH;
-  console.log(serviceAccount);
+  // console.log(serviceAccount);
   if (!serviceAccount) {
     throw new Error(
       "Service account JSON path is not defined in environment variables."
