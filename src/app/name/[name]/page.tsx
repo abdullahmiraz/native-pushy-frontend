@@ -14,7 +14,7 @@ export default async function NamePage({
 
   return (
     <main style={{ textAlign: "center", padding: 20 }}>
-      <NameView name={name} />
+      <NameView name={name || ""} />
     </main>
   );
 }

@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState, useEffect } from "react";
+import { generateToken, messaging } from "../lib/firebase.config";
+import { onMessage } from "firebase/messaging";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [names, setNames] = useState<string[]>([]);
@@ -10,6 +13,16 @@ export default function Home() {
     fetch("/api/names")
       .then((res) => res.json())
       .then((data) => setNames(data.map((item: any) => item.name)));
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && messaging) {
+      generateToken();
+      onMessage(messaging, (payload) => {
+        console.log("Message received. ", payload);
+        toast(payload.notification?.body || "Not found message");
+      });
+    }
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

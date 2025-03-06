@@ -3,8 +3,7 @@
 
 import { useState } from "react";
 
-export default function NameView({ params }: { params: { name: string } }) {
-  const { name } = params;
+export default function NameView({ name }: { name: string }) {
   const [shareUrl, setShareUrl] = useState("");
 
   const generateShareLink = async () => {
