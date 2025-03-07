@@ -14,9 +14,9 @@ if (!admin.apps.length) {
 }
 
 export async function POST(req: Request) {
-  const { name, token } = await req.json();
+  const { name } = await req.json();
 
-  if (!name || !token) {
+  if (!name ) {
     return new Response(JSON.stringify({ error: "Invalid request" }), {
       status: 400,
     });
@@ -24,15 +24,30 @@ export async function POST(req: Request) {
 
   try {
     // Send a message using the Firebase Admin SDK
+    // const message = {
+    //   token: token,
+    //   notification: {
+    //     title: "New Notification",
+    //     body: `Open the app to view: ${name}`,
+    //   },
+    //   android: {
+    //     notification: {
+    //       clickAction: `myapp://name/${name}`,
+    //     },
+    //   },
+    // };
+
     const message = {
-      token: token,
+      topic: "global_notifications",
       notification: {
         title: "New Notification",
         body: `Open the app to view: ${name}`,
       },
       android: {
+        priority: "high" as const,
         notification: {
-          clickAction: `myapp://name/${name}`,
+          sound: "default",
+          click_action: "expo-notifications",
         },
       },
     };

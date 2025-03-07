@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { generateToken } from "../lib/firebase.config";
 import { toast } from "react-toastify";
+import { PushNotiSender } from "./PushNotiSender";
 
 export default function NameView({ name }: { name: string }) {
   const [shareUrl, setShareUrl] = useState("");
@@ -79,7 +80,8 @@ export default function NameView({ name }: { name: string }) {
         <Button onClick={generateShareLink}>Share Link</Button>
       </div>
       <div>
-        <Button onClick={sendPushNotification}>Send Push Notification</Button>
+        {/* <Button onClick={sendPushNotification}>Send Push Notification</Button> */}
+        <PushNotiSender />
       </div>
     </div>
   );
