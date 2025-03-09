@@ -42,4 +42,4 @@ yarn-error.log*
 next-env.d.ts
 
 
-secrets/
+firebase_cloud_msg_secret.json
